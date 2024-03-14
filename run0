@@ -1,0 +1,101 @@
+using System;
+using System.Windows.Forms;
+
+public class MainWindow : Form
+{
+    public MainWindow()
+    {
+        Text = "testForm";
+        Size = new System.Drawing.Size(400, 200);
+
+        // Initialize variables
+        string userName = Environment.UserName;
+        bool OK = false;
+        string HWID = "";
+        string GHash = "";
+        string Clave = "";
+        string C_DIR = "";
+
+        var panel = new FlowLayoutPanel();
+
+        var button = new Button();
+        button.Text = "Click Me";
+        button.Click += OnButtonClicked;
+        panel.Controls.Add(button);
+
+        var checkBox = new CheckBox();
+        checkBox.Text = "Check Me";
+        checkBox.CheckedChanged += OnCheckBoxCheckedChanged;
+        panel.Controls.Add(checkBox);
+
+        var comboBox = new ComboBox();
+        comboBox.Items.AddRange(new string[] { "Option 1", "Option 2" });
+        comboBox.SelectedIndexChanged += OnComboBoxSelectedIndexChanged;
+        panel.Controls.Add(comboBox);
+
+        var decryptButton = new Button();
+        decryptButton.Text = "DECRY";
+        decryptButton.Click += OnDecryptButtonClicked;
+        panel.Controls.Add(decryptButton);
+
+        var aesDecryptButton = new Button();
+        aesDecryptButton.Text = "AES_DECRYPT";
+        aesDecryptButton.Click += OnAesDecryptButtonClicked;
+        panel.Controls.Add(aesDecryptButton);
+
+        var fileDecryptButton = new Button();
+        fileDecryptButton.Text = "FILE_DECRYPT";
+        fileDecryptButton.Click += OnFileDecryptButtonClicked;
+        panel.Controls.Add(fileDecryptButton);
+
+        var dirDecryptButton = new Button();
+        dirDecryptButton.Text = "DIR_DECRYPT";
+        dirDecryptButton.Click += OnDirDecryptButtonClicked;
+        panel.Controls.Add(dirDecryptButton);
+
+        Controls.Add(panel);
+    }
+
+    private void OnButtonClicked(object sender, EventArgs e)
+    {
+        Console.WriteLine("Button clicked!");
+    }
+
+    private void OnCheckBoxCheckedChanged(object sender, EventArgs e)
+    {
+        var checkBox = (CheckBox)sender;
+        Console.WriteLine("Check box checked: " + checkBox.Checked);
+    }
+
+    private void OnComboBoxSelectedIndexChanged(object sender, EventArgs e)
+    {
+        var comboBox = (ComboBox)sender;
+        string selectedItem = comboBox.SelectedItem.ToString();
+        Console.WriteLine("Selected option: " + selectedItem);
+    }
+
+    private void OnDecryptButtonClicked(object sender, EventArgs e)
+    {
+        Console.WriteLine("Decrypt button clicked!");
+    }
+
+    private void OnAesDecryptButtonClicked(object sender, EventArgs e)
+    {
+        Console.WriteLine("AES Decrypt button clicked!");
+    }
+
+    private void OnFileDecryptButtonClicked(object sender, EventArgs e)
+    {
+        Console.WriteLine("File Decrypt button clicked!");
+    }
+
+    private void OnDirDecryptButtonClicked(object sender, EventArgs e)
+    {
+        Console.WriteLine("Directory Decrypt button clicked!");
+    }
+
+    public static void Main()
+    {
+        Application.Run(new MainWindow());
+    }
+}
